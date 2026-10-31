@@ -1,5 +1,7 @@
 # Evidencias · ARSW-EQP-XX
 
+Integrantes: Tomás Olaya Díaz · Isaac David Burgos Cervantes · Javier Romero
+
 Todas las horas están en UTC, el 31 de octubre de 2026. Para cada paso dejamos tres cosas: la captura, la salida completa del comando en `evidencias/logs/` y, cuando la herramienta lo genera, el JSON en `evidencias/json/`. A los JSON les pusimos el prefijo `antes-` si se tomaron con el código original y `despues-` si se tomaron con nuestros cambios.
 
 ## Entorno

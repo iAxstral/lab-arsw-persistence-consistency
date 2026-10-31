@@ -1,6 +1,6 @@
 # Matriz de decisiones · ARSW-EQP-XX
 
-Integrantes: iAxstral (tomasdi.dev@gmail.com) · _completar con el resto del equipo_
+Integrantes: Tomás Olaya Díaz · Isaac David Burgos Cervantes · Javier Romero
 
 > Criterio de lectura: para cada dato partimos de **la consulta que debe responder**, **qué tiene que cambiar como una unidad** y **qué pasa si se pierde o llega tarde**. El motor sale de ahí, no de «SQL estructurado / NoSQL flexible».
 
