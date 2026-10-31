@@ -1,0 +1,71 @@
+# inicio 2026-10-31T12:29:51Z (UTC) — Experimento 2: Redis detenido (DESPUÉS de TODO 3)
+$ docker compose run --rm tools reset
+Resultado guardado en results/reset-20261031T122951784625Z.json
+$ docker compose stop redis
+ Container arsw-persistencia-redis-1 Stopping 
+ Container arsw-persistencia-redis-1 Stopped 
+$ docker compose run --rm tools redis-down
+{
+  "mode": "redis-down",
+  "utc": "2026-10-31T12:30:04.849827+00:00",
+  "results": [
+    {
+      "test": "degradacion_redis",
+      "passed": true,
+      "evidence": {
+        "edit_status": 200,
+        "presence_status": 200,
+        "presence": "{\"available\":false,\"ttl_seconds\":null}"
+      }
+    }
+  ]
+}
+Resultado guardado en results/redis-down-20261031T123004849907Z.json
+exit=0
+## Heartbeats adicionales para que el panel de degradación tenga muestras:
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+{"available":false,"ttl_seconds":null}
+$ curl /api/presence/board-1
+{"available":false,"users":[]}
+$ curl /api/permissions/board-1 (caché caída -> fallback a autoridad)
+{"can_edit":true,"source":"cache-or-management","ttl_seconds":60}
+$ curl localhost:8080/metrics de content (dependencias y degradación)
+lab_dependency_up{dependency="mongo",service="content"} 1.0
+lab_dependency_up{dependency="redis",service="content"} 0.0
+lab_dependency_up{dependency="management",service="content"} 1.0
+lab_cache_total{result="miss"} 4.0
+lab_cache_total{result="hit"} 2.0
+lab_cache_total{result="error"} 1.0
+lab_degraded_total{feature="presence"} 13.0
+$ Prometheus: up{job=~"content|management"}
+management 1
+content 1
+
+## Restauración (2026-10-31T12:30:38Z UTC)
+$ docker compose start redis
+ Container arsw-persistencia-redis-1 Starting 
+ Container arsw-persistencia-redis-1 Started 
+$ docker compose exec redis redis-cli ping
+PONG
+$ docker compose run --rm tools acceptance
+      "test": "arranque",
+      "passed": true,
+      "test": "ediciones_concurrentes",
+      "passed": true,
+      "test": "permiso_revocado",
+      "passed": true,
+      "test": "presencia_expira",
+      "passed": true,
+Resultado guardado en results/acceptance-20261031T123109605878Z.json
+exit=0
+# fin 2026-10-31T12:31:09Z

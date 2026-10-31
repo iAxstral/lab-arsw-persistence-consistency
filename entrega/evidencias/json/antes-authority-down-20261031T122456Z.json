@@ -1,0 +1,14 @@
+{
+  "mode": "authority-down",
+  "utc": "2026-10-31T12:24:56.949837+00:00",
+  "results": [
+    {
+      "test": "autoridad_no_disponible",
+      "passed": false,
+      "evidence": {
+        "edit_status": 200,
+        "body": "{\"id\":\"board-1\",\"title\":\"Sin autoridad\",\"version\":2,\"preferences\":{\"background\":\"white\"}}"
+      }
+    }
+  ]
+}

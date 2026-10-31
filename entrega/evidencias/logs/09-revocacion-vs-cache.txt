@@ -1,0 +1,35 @@
+# inicio 2026-10-31T12:29:26Z (UTC) — Revocación frente a caché (DESPUÉS de TODO 2)
+$ curl -s -XPOST -H 'X-Lab-Key: lab-admin' localhost:8080/api/lab/reset
+{"reset":true}
+$ curl -s -H 'X-User: luis' localhost:8080/api/permissions/board-1
+{"can_edit":true,"source":"cache-or-management","ttl_seconds":60}
+$ docker compose exec -T redis redis-cli GET permission:board-1:luis
+1
+
+$ curl -s -XPUT -H 'X-Lab-Key: lab-admin' -H 'Content-Type: application/json' -d '{"can_edit":false}' localhost:8080/management/permissions/board-1/luis
+{"user":"luis","can_edit":false}
+## La caché TODAVÍA dice que Luis puede editar (valor y TTL restante):
+$ docker compose exec -T redis redis-cli GET permission:board-1:luis
+1
+
+$ docker compose exec -T redis redis-cli TTL permission:board-1:luis
+60
+
+$ curl -s -H 'X-User: luis' localhost:8080/api/permissions/board-1
+{"can_edit":true,"source":"cache-or-management","ttl_seconds":60}
+## Pero la nueva escritura consulta la autoridad (PostgreSQL vía Gestión):
+$ curl -s -w ' -> HTTP %{http_code}' -XPUT -H 'X-User: luis' -H 'Content-Type: application/json' -d '{"title":"Cambio prohibido","expected_version":1}' localhost:8080/api/boards/board-1
+{"detail":"Permiso de edición revocado o inexistente"} -> HTTP 403
+$ curl -s localhost:8080/api/boards/board-1
+{"id":"board-1","title":"Tablero ARSW","version":1,"preferences":{"background":"white"}}
+$ docker compose exec -T postgres psql -U lab -d boards -c "SELECT * FROM memberships WHERE board_id='board-1'"
+ board_id | user_id | can_edit 
+----------+---------+----------
+ board-1  | ana     | t
+ board-1  | luis    | f
+(2 rows)
+
+
+$ curl -s -XPUT -H 'X-Lab-Key: lab-admin' -H 'Content-Type: application/json' -d '{"can_edit":true}' localhost:8080/management/permissions/board-1/luis
+{"user":"luis","can_edit":true}
+# fin 2026-10-31T12:29:27Z

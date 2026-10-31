@@ -1,0 +1,21 @@
+# inicio 2026-10-31T12:25:20Z (UTC) — k6 carga, versión BASE
+ Container arsw-persistencia-k6-run-fa09964f8f63 Creating 
+ Container arsw-persistencia-k6-run-fa09964f8f63 Created 
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+     execution: local
+        script: /scripts/workload.js
+        output: -
+     scenarios: (100.00%) 1 scenario, 5 max VUs, 2m10s max duration (incl. graceful stop):
+              * default: Up to 5 looping VUs for 1m40s over 3 stages (gracefulRampDown: 30s, gracefulStop: 30s)
+{
+  "prueba": "carga",
+  "P95_ms": 7.345487249999998,
+  "fallos": 0,
+  "nota": "Umbrales didácticos; justificar resultados según recursos."
+}
+default ✓ [ 100% ] 0/5 VUs  1m40s
+# fin 2026-10-31T12:27:00Z

@@ -1,0 +1,80 @@
+{
+  "mode": "acceptance",
+  "utc": "2026-10-31T12:31:09.605784+00:00",
+  "results": [
+    {
+      "test": "arranque",
+      "passed": true,
+      "evidence": {
+        "id": "board-1",
+        "title": "Edición con Redis detenido",
+        "version": 3,
+        "preferences": {
+          "background": "white"
+        }
+      }
+    },
+    {
+      "test": "ediciones_concurrentes",
+      "passed": true,
+      "evidence": {
+        "statuses": [
+          200,
+          409
+        ],
+        "before": {
+          "id": "board-1",
+          "title": "Tablero ARSW",
+          "version": 1,
+          "preferences": {
+            "background": "white"
+          }
+        },
+        "after": {
+          "id": "board-1",
+          "title": "Cambio de ana",
+          "version": 2,
+          "preferences": {
+            "background": "white"
+          }
+        }
+      }
+    },
+    {
+      "test": "permiso_revocado",
+      "passed": true,
+      "evidence": {
+        "cached_before": {
+          "can_edit": true,
+          "source": "cache-or-management",
+          "ttl_seconds": 60
+        },
+        "write_status": 403,
+        "after": {
+          "id": "board-1",
+          "title": "Tablero ARSW",
+          "version": 1,
+          "preferences": {
+            "background": "white"
+          }
+        }
+      }
+    },
+    {
+      "test": "presencia_expira",
+      "passed": true,
+      "evidence": {
+        "before": {
+          "available": true,
+          "users": [
+            "ana"
+          ]
+        },
+        "after_22s": {
+          "available": true,
+          "users": []
+        }
+      }
+    }
+  ]
+}

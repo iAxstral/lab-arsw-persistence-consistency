@@ -1,0 +1,14 @@
+{
+  "mode": "authority-down",
+  "utc": "2026-10-31T12:31:32.370227+00:00",
+  "results": [
+    {
+      "test": "autoridad_no_disponible",
+      "passed": true,
+      "evidence": {
+        "edit_status": 503,
+        "body": "{\"detail\":\"No se puede validar el permiso; escritura no autorizada\"}"
+      }
+    }
+  ]
+}

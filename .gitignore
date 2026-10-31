@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Resultados locales del laboratorio (la evidencia seleccionada se copia a entrega/evidencias/)
+results/*
+!results/.gitkeep

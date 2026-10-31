@@ -1,0 +1,15 @@
+{
+  "mode": "redis-down",
+  "utc": "2026-10-31T12:30:04.849827+00:00",
+  "results": [
+    {
+      "test": "degradacion_redis",
+      "passed": true,
+      "evidence": {
+        "edit_status": 200,
+        "presence_status": 200,
+        "presence": "{\"available\":false,\"ttl_seconds\":null}"
+      }
+    }
+  ]
+}

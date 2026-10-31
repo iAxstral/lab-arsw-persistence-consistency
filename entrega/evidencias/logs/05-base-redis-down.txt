@@ -1,0 +1,25 @@
+# inicio 2026-10-31T12:24:35Z (UTC) — Redis detenido, versión BASE (antes de TODO 3)
+      "passed": true,
+Resultado guardado en results/reset-20261031T122436350168Z.json
+ Container arsw-persistencia-redis-1 Stopping 
+ Container arsw-persistencia-redis-1 Stopped 
+{
+  "mode": "redis-down",
+  "utc": "2026-10-31T12:24:43.570151+00:00",
+  "results": [
+    {
+      "test": "degradacion_redis",
+      "passed": false,
+      "evidence": {
+        "edit_status": 200,
+        "presence_status": 503,
+        "presence": "{\"detail\":\"Redis no disponible: implementar degradación\"}"
+      }
+    }
+  ]
+}
+Resultado guardado en results/redis-down-20261031T122443570251Z.json
+
+ Container arsw-persistencia-redis-1 Starting 
+ Container arsw-persistencia-redis-1 Started 
+# fin 2026-10-31T12:24:43Z

@@ -1,0 +1,13 @@
+# Consultas a Prometheus sobre las ventanas exactas de cada ejecución k6 (UTC)
+
+## BASE: 12:25:22–12:27:00 UTC (98s)
+- P95 backend por servicio (histograma, ventana completa): management=0.02421, content=0.004938
+- Solicitudes en la ventana por servicio: management=19.6, content=2037
+- 5xx en la ventana: content=0
+- Tasa media req/s content: management=0.2, content=20.79
+
+## SOLUCION: 12:32:53–12:34:33 UTC (100s)
+- P95 backend por servicio (histograma, ventana completa): management=0.02425, content=0.004987
+- Solicitudes en la ventana por servicio: management=20, content=2032
+- 5xx en la ventana: content=0
+- Tasa media req/s content: management=0.2, content=20.32

@@ -1,0 +1,9 @@
+# 2026-10-31T12:29:40Z (UTC) — TTL de presencia (DESPUÉS de TODO 3)
+{"available":true,"ttl_seconds":20}
+$ redis-cli TTL presence:board-1:ana
+20
+$ redis-cli TTL presence:board-1:ana
+15
+## heartbeat renueva el TTL:
+{"available":true,"ttl_seconds":20}
+20

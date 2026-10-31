@@ -1,0 +1,51 @@
+# inicio 2026-10-31T12:31:21Z (UTC) — Experimento 3: autoridad de permisos no disponible (DESPUÉS de TODO 2)
+Resultado guardado en results/reset-20261031T123121590144Z.json
+## Primar el permiso de Ana desde la interfaz («Consultar permiso en caché»)
+$ redis-cli GET/TTL permission:board-1:ana
+1
+59
+$ docker compose stop management
+ Container arsw-persistencia-management-1 Stopping 
+ Container arsw-persistencia-management-1 Stopped 
+$ docker compose run --rm tools authority-down
+{
+  "mode": "authority-down",
+  "utc": "2026-10-31T12:31:32.370227+00:00",
+  "results": [
+    {
+      "test": "autoridad_no_disponible",
+      "passed": true,
+      "evidence": {
+        "edit_status": 503,
+        "body": "{\"detail\":\"No se puede validar el permiso; escritura no autorizada\"}"
+      }
+    }
+  ]
+}
+Resultado guardado en results/authority-down-20261031T123132370341Z.json
+exit=0
+## La caché sigue concediendo a Ana (lectura UI), pero la escritura no se acepta:
+{"can_edit":true,"source":"cache-or-management","ttl_seconds":60}
+{"id":"board-1","title":"Tablero ARSW","version":1,"preferences":{"background":"white"}}
+
+## Restauración (2026-10-31T12:31:54Z UTC)
+$ docker compose start management
+ Container arsw-persistencia-postgres-1 Healthy 
+ Container arsw-persistencia-management-1 Starting 
+ Container arsw-persistencia-management-1 Started 
+$ curl /management/health
+{"service":"management","alive":true} -> HTTP 200
+$ PUT válido después de restaurar
+{"id":"board-1","title":"Gestión restaurada","version":2,"preferences":{"background":"white"}} -> HTTP 200
+$ docker compose run --rm tools acceptance
+      "test": "arranque",
+      "passed": true,
+      "test": "ediciones_concurrentes",
+      "passed": true,
+      "test": "permiso_revocado",
+      "passed": true,
+      "test": "presencia_expira",
+      "passed": true,
+Resultado guardado en results/acceptance-20261031T123224139096Z.json
+exit=0
+# fin 2026-10-31T12:32:24Z

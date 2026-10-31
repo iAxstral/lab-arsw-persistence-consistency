@@ -1,0 +1,88 @@
+# inicio 2026-10-31T12:24:04Z (UTC) — baseline ANTES de corregir
+ Container arsw-persistencia-tools-run-a72740c3ac92 Creating 
+ Container arsw-persistencia-tools-run-a72740c3ac92 Created 
+{
+  "mode": "baseline",
+  "utc": "2026-10-31T12:24:27.146628+00:00",
+  "results": [
+    {
+      "test": "arranque",
+      "passed": true,
+      "evidence": {
+        "id": "board-1",
+        "title": "Tablero ARSW",
+        "version": 1,
+        "preferences": {
+          "background": "white"
+        }
+      }
+    },
+    {
+      "test": "ediciones_concurrentes",
+      "passed": false,
+      "evidence": {
+        "statuses": [
+          200,
+          200
+        ],
+        "before": {
+          "id": "board-1",
+          "title": "Tablero ARSW",
+          "version": 1,
+          "preferences": {
+            "background": "white"
+          }
+        },
+        "after": {
+          "id": "board-1",
+          "title": "Cambio de luis",
+          "version": 3,
+          "preferences": {
+            "background": "white"
+          }
+        }
+      }
+    },
+    {
+      "test": "permiso_revocado",
+      "passed": false,
+      "evidence": {
+        "cached_before": {
+          "can_edit": true,
+          "source": "cache-or-management",
+          "ttl_seconds": 60
+        },
+        "write_status": 200,
+        "after": {
+          "id": "board-1",
+          "title": "Cambio prohibido",
+          "version": 2,
+          "preferences": {
+            "background": "white"
+          }
+        }
+      }
+    },
+    {
+      "test": "presencia_expira",
+      "passed": false,
+      "evidence": {
+        "before": {
+          "available": true,
+          "users": [
+            "ana"
+          ]
+        },
+        "after_22s": {
+          "available": true,
+          "users": [
+            "ana"
+          ]
+        }
+      }
+    }
+  ]
+}
+Resultado guardado en results/baseline-20261031T122427146716Z.json
+exit=0
+# fin 2026-10-31T12:24:27Z

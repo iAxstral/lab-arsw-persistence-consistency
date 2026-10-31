@@ -1,0 +1,9 @@
+# 2026-10-31T12:23:53Z (UTC) — inspección
+$ mongosh findOne
+{
+  _id: 'board-1',
+  preferences: { background: 'white' },
+  title: 'Tablero ARSW',
+  version: 1
+}
+$ redis-cli --scan

@@ -1,0 +1,27 @@
+# inicio 2026-10-31T12:24:48Z (UTC) — Autoridad detenida, versión BASE (antes de TODO 2)
+Resultado guardado en results/reset-20261031T122449580265Z.json
+$ curl -H "X-User: ana" /api/permissions/board-1  (primar caché)
+{"can_edit":true,"source":"cache-or-management","ttl_seconds":60}
+ Container arsw-persistencia-management-1 Stopping 
+ Container arsw-persistencia-management-1 Stopped 
+{
+  "mode": "authority-down",
+  "utc": "2026-10-31T12:24:56.949837+00:00",
+  "results": [
+    {
+      "test": "autoridad_no_disponible",
+      "passed": false,
+      "evidence": {
+        "edit_status": 200,
+        "body": "{\"id\":\"board-1\",\"title\":\"Sin autoridad\",\"version\":2,\"preferences\":{\"background\":\"white\"}}"
+      }
+    }
+  ]
+}
+Resultado guardado en results/authority-down-20261031T122456949911Z.json
+
+ Container arsw-persistencia-postgres-1 Waiting 
+ Container arsw-persistencia-postgres-1 Healthy 
+ Container arsw-persistencia-management-1 Starting 
+ Container arsw-persistencia-management-1 Started 
+# fin 2026-10-31T12:24:57Z
