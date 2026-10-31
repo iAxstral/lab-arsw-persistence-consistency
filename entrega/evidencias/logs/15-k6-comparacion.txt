@@ -1,0 +1,11 @@
+# Tabla armada a partir de json/antes-k6-carga-summary.json y json/despues-k6-carga-summary.json
+métrica                          antes     después
+solicitudes                       2000        1995
+req/s                            19.98       19.92
+P95 (ms)                          7.35        7.92
+P90 (ms)                          6.25        6.85
+mediana (ms)                      3.73        4.52
+máximo (ms)                       51.8        69.4
+http_req_failed                  0.00%       0.00%
+checks                         100.00%     100.00%
+semantic_errors                      0           0
