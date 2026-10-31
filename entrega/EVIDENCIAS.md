@@ -1,4 +1,4 @@
-# Evidencias · ARSW-EQP-XX
+# Evidencias · ARSW-EQP-06
 
 Integrantes: Tomás Olaya Díaz · Isaac David Burgos Cervantes · Javier Romero
 
@@ -173,7 +173,7 @@ Aunque Redis tenía `permission:board-1:ana = 1`, `authority-down` dio **503** y
 
 ### Dashboard
 
-Duplicamos «ARSW · Punto de partida» como **ARSW-EQP-XX · Persistencia** en la carpeta ARSW. Mantuvimos los dos paneles iniciales y agregamos los seis de `OBSERVABILIDAD.md` más dos opcionales: respuestas por código y disponibilidad técnica. El export completo está en [`dashboard.json`](dashboard.json) y conserva el UID `prometheus` de la fuente.
+Duplicamos «ARSW · Punto de partida» como **ARSW-EQP-06 · Persistencia** en la carpeta ARSW. Mantuvimos los dos paneles iniciales y agregamos los seis de `OBSERVABILIDAD.md` más dos opcionales: respuestas por código y disponibilidad técnica. El export completo está en [`dashboard.json`](dashboard.json) y conserva el UID `prometheus` de la fuente.
 
 | # | Panel | PromQL |
 |---|---|---|

@@ -1,4 +1,4 @@
-# Matriz de decisiones · ARSW-EQP-XX
+# Matriz de decisiones · ARSW-EQP-06
 
 Integrantes: Tomás Olaya Díaz · Isaac David Burgos Cervantes · Javier Romero
 
